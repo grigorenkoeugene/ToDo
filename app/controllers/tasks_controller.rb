@@ -1,18 +1,14 @@
 class TasksController < ApplicationController
   def index 
-    @tasks = Task.all
+    @tasks = Task.order(params[:sort])
   end
 
   def new 
   end 
 
   def create
-    if params[:title] == ""
-      p "Очко"
-    else
       Task.create(title: params[:title])
       redirect_to(tasks_path)
-    end
   end
 
   def destroy

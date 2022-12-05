@@ -1,6 +1,15 @@
 <% @tasks.each do |task| %>
-  <div><%= task[:title] %> </div>
+  <div>
+    <%= task[:title] %> 
+    <input type="checkbox"/>
+  </div>
   <%= button_to "delete", delete_task_path(task.id), method: :delete %>
   <hr />
 <% end %>
+
 <%= link_to "new task", tasks_new_path %>
+<%= link_to "sort by title", :sort => "title"%>
+<%= link_to "sort by released", :sort => "created_at"%>
+<hr/>
+
+  
