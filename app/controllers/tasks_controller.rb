@@ -16,4 +16,9 @@ class TasksController < ApplicationController
      redirect_to(tasks_path)
   end
 
+  def add 
+    Task.create(title: params[:chack])
+    redirect_to(tasks_path)
+  end
+
 end

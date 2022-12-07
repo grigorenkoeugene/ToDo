@@ -1,15 +1,22 @@
+<h1><center>ToDo list</center></h1>
+<%= link_to "new task;", tasks_new_path %>
+<br>
+<%= link_to "sort by title  ", :sort => "title"%>
+<br>
+<%= link_to "sort by released", :sort => "created_at"%>
+<hr />
+
 <% @tasks.each do |task| %>
   <div>
-    <%= task[:title] %> 
-    <input type="checkbox"/>
+    <%= form_with url: tasks_path, method: :post do |form|%>
+      <%= form.check_box :chack %>
+      <%= task[:title] %> 
+    <%end%>
   </div>
-  <%= button_to "delete", delete_task_path(task.id), method: :delete %>
+  <%= button_to "Delete", delete_task_path(task.id), method: :delete %>
+
   <hr />
 <% end %>
 
-<%= link_to "new task", tasks_new_path %>
-<%= link_to "sort by title", :sort => "title"%>
-<%= link_to "sort by released", :sort => "created_at"%>
-<hr/>
 
   
